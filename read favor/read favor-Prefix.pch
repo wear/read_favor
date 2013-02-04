@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'read favor' target in the 'read favor' project
+//
+
+#ifdef __OBJC__
+  #import <Cocoa/Cocoa.h>
+#endif
