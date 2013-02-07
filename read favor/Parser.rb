@@ -12,7 +12,6 @@ class Parser
   attr_accessor :feed,:posts,:post
 
   def initialize
-    @posts = []
     @parser = NSXMLParser.alloc.init
     # tag标记
     @post_mark_tags = ['entry','item']
@@ -22,12 +21,14 @@ class Parser
 
   def fetch_feed_data(params={})
     @feed = {}
+    @posts = []
     @need_create_feed = true 
     @feed_url = params[:feed_url]
     fetch_data
   end
 
   def update_feed_data(params={})
+    @posts = []
     @feed = params[:feed]
     @need_create_feed = false
     @feed_url = @feed.url
@@ -35,7 +36,7 @@ class Parser
   end
 
   def fetch_data
-    @parser.initWithContentsOfURL NSURL.URLWithString @feed_url
+    @parser.initWithContentsOfURL NSURL.URLWithString(@feed_url)
     @parser.delegate = self   
     @parser.parse    
   end
@@ -64,14 +65,13 @@ class Parser
   end
 
   def parser(parser,didEndElement:el,namespaceURI:namespaceURI,qualifiedName:qName)
-    if el == 'title' && !@post && @need_create_feed
+    if el == 'title' && @need_create_feed && @feed[:title].nil?
       @feed[:title] = formated_title
       @feed[:url] = @feed_url
     end
 
     if @post
       if el == 'title'
-        p formated_title
         @post[:title] = formated_title 
       end
       if @post_body_tags.include?(el)
