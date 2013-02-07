@@ -31,7 +31,7 @@ class AppDelegate
   #
   def managedObjectModel
       unless @managedObjectModel
-        model_url = NSBundle.mainBundle.URLForResource("read_favor", withExtension:"momd")
+        model_url = NSBundle.mainBundle.URLForResource("readFavor", withExtension:"momd")
         @managedObjectModel = NSManagedObjectModel.alloc.initWithContentsOfURL(model_url)
       end
       
@@ -77,7 +77,7 @@ class AppDelegate
       url = directory.URLByAppendingPathComponent("read_favor.storedata")
       @persistentStoreCoordinator = NSPersistentStoreCoordinator.alloc.initWithManagedObjectModel(mom)
 
-      unless @persistentStoreCoordinator.addPersistentStoreWithType(NSXMLStoreType, configuration:nil, URL:url, options:nil, error:error)
+      unless @persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration:nil, URL:url, options:nil, error:error)
           NSApplication.sharedApplication.presentError(error[0])
           return nil
       end

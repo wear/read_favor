@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D80EBFB316C0F29700A23156 /* unread.png in Resources */ = {isa = PBXBuildFile; fileRef = D80EBFB216C0F29700A23156 /* unread.png */; };
 		D854A23E16BF80670089BD11 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D854A23D16BF80670089BD11 /* Cocoa.framework */; };
 		D854A24016BF80670089BD11 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D854A23F16BF80670089BD11 /* MacRuby.framework */; };
 		D854A24916BF80670089BD11 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D854A24716BF80670089BD11 /* InfoPlist.strings */; };
@@ -14,7 +15,20 @@
 		D854A25016BF80680089BD11 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D854A24E16BF80680089BD11 /* MainMenu.xib */; };
 		D854A25316BF80680089BD11 /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = D854A25216BF80680089BD11 /* rb_main.rb */; };
 		D854A25516BF80680089BD11 /* AppDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = D854A25416BF80680089BD11 /* AppDelegate.rb */; };
-		D854A25816BF80680089BD11 /* read_favor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D854A25616BF80680089BD11 /* read_favor.xcdatamodeld */; };
+		D854A26216BF82F00089BD11 /* Parser.rb in Resources */ = {isa = PBXBuildFile; fileRef = D854A26116BF82F00089BD11 /* Parser.rb */; };
+		D854A26616BF86730089BD11 /* Post.rb in Resources */ = {isa = PBXBuildFile; fileRef = D854A26516BF86730089BD11 /* Post.rb */; };
+		D854A26C16BF91DD0089BD11 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D854A26B16BF91DD0089BD11 /* WebKit.framework */; };
+		D854A26E16BF92990089BD11 /* PostController.rb in Resources */ = {isa = PBXBuildFile; fileRef = D854A26D16BF92990089BD11 /* PostController.rb */; };
+		D854A27016BFB0680089BD11 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = D854A26F16BFB0680089BD11 /* main.css */; };
+		D854A27316BFDF1A0089BD11 /* PostCell.rb in Resources */ = {isa = PBXBuildFile; fileRef = D854A27216BFDF1A0089BD11 /* PostCell.rb */; };
+		D854A27816BFF6A40089BD11 /* Feed.rb in Resources */ = {isa = PBXBuildFile; fileRef = D854A27716BFF6A40089BD11 /* Feed.rb */; };
+		D854A27B16BFFB100089BD11 /* readFavor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D854A27916BFFB100089BD11 /* readFavor.xcdatamodeld */; };
+		D854A27D16BFFE510089BD11 /* AddFeedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D854A27C16BFFE510089BD11 /* AddFeedView.xib */; };
+		D854A27F16C001370089BD11 /* FeedController.rb in Resources */ = {isa = PBXBuildFile; fileRef = D854A27E16C001370089BD11 /* FeedController.rb */; };
+		D854A28216C0017B0089BD11 /* FeedCell.rb in Resources */ = {isa = PBXBuildFile; fileRef = D854A28116C0017B0089BD11 /* FeedCell.rb */; };
+		D8E6A68016C157AD00D170A0 /* Budget.rb in Resources */ = {isa = PBXBuildFile; fileRef = D8E6A67F16C157AD00D170A0 /* Budget.rb */; };
+		D8E6F0B616C2292C00FB1719 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E6F0B516C2292C00FB1719 /* QuartzCore.framework */; };
+		D8E6F0B916C22B7900FB1719 /* SplitViewController.rb in Resources */ = {isa = PBXBuildFile; fileRef = D8E6F0B816C22B7800FB1719 /* SplitViewController.rb */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D80EBFB216C0F29700A23156 /* unread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unread.png; sourceTree = "<group>"; };
 		D854A23916BF80670089BD11 /* read favor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "read favor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D854A23D16BF80670089BD11 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D854A23F16BF80670089BD11 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = Library/Frameworks/MacRuby.framework; sourceTree = DEVELOPER_DIR; };
@@ -38,7 +53,20 @@
 		D854A24F16BF80680089BD11 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D854A25216BF80680089BD11 /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
 		D854A25416BF80680089BD11 /* AppDelegate.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = AppDelegate.rb; sourceTree = "<group>"; };
-		D854A25716BF80680089BD11 /* read_favor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = read_favor.xcdatamodel; sourceTree = "<group>"; };
+		D854A26116BF82F00089BD11 /* Parser.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Parser.rb; sourceTree = "<group>"; };
+		D854A26516BF86730089BD11 /* Post.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Post.rb; sourceTree = "<group>"; };
+		D854A26B16BF91DD0089BD11 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		D854A26D16BF92990089BD11 /* PostController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = PostController.rb; sourceTree = "<group>"; };
+		D854A26F16BFB0680089BD11 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
+		D854A27216BFDF1A0089BD11 /* PostCell.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = PostCell.rb; sourceTree = "<group>"; };
+		D854A27716BFF6A40089BD11 /* Feed.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Feed.rb; sourceTree = "<group>"; };
+		D854A27A16BFFB100089BD11 /* readFavor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = readFavor.xcdatamodel; sourceTree = "<group>"; };
+		D854A27C16BFFE510089BD11 /* AddFeedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFeedView.xib; sourceTree = "<group>"; };
+		D854A27E16C001370089BD11 /* FeedController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = FeedController.rb; sourceTree = "<group>"; };
+		D854A28116C0017B0089BD11 /* FeedCell.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = FeedCell.rb; sourceTree = "<group>"; };
+		D8E6A67F16C157AD00D170A0 /* Budget.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Budget.rb; sourceTree = "<group>"; };
+		D8E6F0B516C2292C00FB1719 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D8E6F0B816C22B7800FB1719 /* SplitViewController.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = SplitViewController.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8E6F0B616C2292C00FB1719 /* QuartzCore.framework in Frameworks */,
+				D854A26C16BF91DD0089BD11 /* WebKit.framework in Frameworks */,
 				D854A23E16BF80670089BD11 /* Cocoa.framework in Frameworks */,
 				D854A24016BF80670089BD11 /* MacRuby.framework in Frameworks */,
 			);
@@ -74,6 +104,8 @@
 		D854A23C16BF80670089BD11 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8E6F0B516C2292C00FB1719 /* QuartzCore.framework */,
+				D854A26B16BF91DD0089BD11 /* WebKit.framework */,
 				D854A23D16BF80670089BD11 /* Cocoa.framework */,
 				D854A23F16BF80670089BD11 /* MacRuby.framework */,
 			);
@@ -83,11 +115,16 @@
 		D854A24416BF80670089BD11 /* read favor */ = {
 			isa = PBXGroup;
 			children = (
+				D854A28016C0014A0089BD11 /* Model */,
+				D854A27116BFB8200089BD11 /* Cell */,
 				D854A25416BF80680089BD11 /* AppDelegate.rb */,
-				D854A25616BF80680089BD11 /* read_favor.xcdatamodeld */,
 				D854A24D16BF80680089BD11 /* Resources */,
 				D854A25116BF80680089BD11 /* Other Sources */,
 				D854A24516BF80670089BD11 /* Supporting Files */,
+				D854A26116BF82F00089BD11 /* Parser.rb */,
+				D854A26D16BF92990089BD11 /* PostController.rb */,
+				D854A27E16C001370089BD11 /* FeedController.rb */,
+				D8E6F0B816C22B7800FB1719 /* SplitViewController.rb */,
 			);
 			path = "read favor";
 			sourceTree = "<group>";
@@ -106,7 +143,10 @@
 		D854A24D16BF80680089BD11 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D8E6F0BA16C22BA900FB1719 /* static */,
 				D854A24E16BF80680089BD11 /* MainMenu.xib */,
+				D854A27916BFFB100089BD11 /* readFavor.xcdatamodeld */,
+				D854A27C16BFFE510089BD11 /* AddFeedView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -117,6 +157,34 @@
 				D854A25216BF80680089BD11 /* rb_main.rb */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		D854A27116BFB8200089BD11 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D854A27216BFDF1A0089BD11 /* PostCell.rb */,
+				D854A28116C0017B0089BD11 /* FeedCell.rb */,
+				D8E6A67F16C157AD00D170A0 /* Budget.rb */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		D854A28016C0014A0089BD11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D854A27716BFF6A40089BD11 /* Feed.rb */,
+				D854A26516BF86730089BD11 /* Post.rb */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D8E6F0BA16C22BA900FB1719 /* static */ = {
+			isa = PBXGroup;
+			children = (
+				D854A26F16BFB0680089BD11 /* main.css */,
+				D80EBFB216C0F29700A23156 /* unread.png */,
+			);
+			name = static;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +260,18 @@
 				D854A25016BF80680089BD11 /* MainMenu.xib in Resources */,
 				D854A25316BF80680089BD11 /* rb_main.rb in Resources */,
 				D854A25516BF80680089BD11 /* AppDelegate.rb in Resources */,
+				D854A26216BF82F00089BD11 /* Parser.rb in Resources */,
+				D854A26616BF86730089BD11 /* Post.rb in Resources */,
+				D854A26E16BF92990089BD11 /* PostController.rb in Resources */,
+				D854A27016BFB0680089BD11 /* main.css in Resources */,
+				D854A27316BFDF1A0089BD11 /* PostCell.rb in Resources */,
+				D854A27816BFF6A40089BD11 /* Feed.rb in Resources */,
+				D854A27D16BFFE510089BD11 /* AddFeedView.xib in Resources */,
+				D854A27F16C001370089BD11 /* FeedController.rb in Resources */,
+				D854A28216C0017B0089BD11 /* FeedCell.rb in Resources */,
+				D80EBFB316C0F29700A23156 /* unread.png in Resources */,
+				D8E6A68016C157AD00D170A0 /* Budget.rb in Resources */,
+				D8E6F0B916C22B7900FB1719 /* SplitViewController.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D854A24B16BF80670089BD11 /* main.m in Sources */,
-				D854A25816BF80680089BD11 /* read_favor.xcdatamodeld in Sources */,
+				D854A27B16BFFB100089BD11 /* readFavor.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +375,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					/Library/Frameworks,
 				);
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -312,6 +393,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					/Library/Frameworks,
 				);
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -353,6 +435,7 @@
 				D854A25D16BF80680089BD11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D854A25E16BF80680089BD11 /* Build configuration list for PBXLegacyTarget "Deployment" */ = {
 			isa = XCConfigurationList;
@@ -361,17 +444,18 @@
 				D854A26016BF80680089BD11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D854A25616BF80680089BD11 /* read_favor.xcdatamodeld */ = {
+		D854A27916BFFB100089BD11 /* readFavor.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D854A25716BF80680089BD11 /* read_favor.xcdatamodel */,
+				D854A27A16BFFB100089BD11 /* readFavor.xcdatamodel */,
 			);
-			currentVersion = D854A25716BF80680089BD11 /* read_favor.xcdatamodel */;
-			path = read_favor.xcdatamodeld;
+			currentVersion = D854A27A16BFFB100089BD11 /* readFavor.xcdatamodel */;
+			path = readFavor.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
