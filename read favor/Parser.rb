@@ -11,12 +11,12 @@ require 'Date'
 class Parser
   attr_accessor :feed,:posts,:post
 
+  EntryMark = ['entry','item']
+  PubDateMark = ['published','pubDate']
+  BodyMark = ['content','description']
+
   def initialize
     @parser = NSXMLParser.alloc.init
-    # tag标记
-    @post_mark_tags = ['entry','item']
-    @post_pubdate_tags = ['published','pubDate']
-    @post_body_tags = ['content','description']
   end
 
   def fetch_feed_data(params={})
@@ -38,7 +38,7 @@ class Parser
   def fetch_data
     @parser.initWithContentsOfURL NSURL.URLWithString(@feed_url)
     @parser.delegate = self   
-    @parser.parse    
+    @parser.parse  
   end
 
   # 代理方法实现
@@ -51,7 +51,7 @@ class Parser
   end
 
   def parser parser,didStartElement:el,namespaceURI:namespace,qualifiedName:qua_nameame,attributes:attr
-    @post = {} if @post_mark_tags.include? el
+    @post = {} if EntryMark.include? el
   end
 
   def parser parser,foundCharacters:found_chars
@@ -66,19 +66,18 @@ class Parser
 
   def parser(parser,didEndElement:el,namespaceURI:namespaceURI,qualifiedName:qName)
     if el == 'title' && @need_create_feed && @feed[:title].nil?
-      @feed[:title] = formated_title
+      @feed[:title] = formated_title || '' 
       @feed[:url] = @feed_url
     end
 
     if @post
-      if el == 'title'
-        @post[:title] = formated_title 
-      end
-      if @post_body_tags.include?(el)
+      @post[:title] = formated_title if el == 'title'
+      if BodyMark.include?(el)
         @post[:body] = (@currentCDATAString ? @currentCDATAString : @current_founded_string)
       end
-      @post[:created_at] = DateTime.parse(@current_founded_string).to_time if @post_pubdate_tags.include? el
-      @posts << @post if @post_mark_tags.include? el
+      @post[:created_at] = DateTime.parse(@current_founded_string).to_time if PubDateMark.include? el
+      @post[:link] = @current_founded_string if el == 'title'
+      @posts << @post if EntryMark.include? el
     end
 
     @current_founded_string = nil

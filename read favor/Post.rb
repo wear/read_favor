@@ -8,4 +8,5 @@
 
 
 class Post  < NSManagedObject
+
 end

@@ -14,7 +14,7 @@ class Parser
   def fetch_data
     @parser.initWithContentsOfURL NSURL.fileURLWithPath(@feed_url)
     @parser.delegate = self   
-    @parser.parse    
+    @parser.parse
   end
 end
 
@@ -58,6 +58,15 @@ class TestPost
       '三原则内容' 
     end
   end
+
+  def link
+    case @feed.url 
+    when 'dapengti.xml'
+      'http://www.dapenti.com/blog/more.asp?name=xilei&id=73381'
+    when 'ruan.xml'
+      'http://www.ruanyifeng.com/blog/2013/01/abstraction_principles.html'
+    end
+  end
 end
 
 describe Parser do
@@ -70,9 +79,10 @@ describe Parser do
       before do
         @xml_list = ['dapengti.xml','ruan.xml']
       end
+
       it 'should set feed info' do
         @xml_list.each do |xml_name|
-          @parser.fetch_feed_data :feed_url => xml_name
+          @parser.fetch_feed_data(:feed_url => xml_name)
           @parser.feed[:url].must_equal xml_name
           @parser.feed[:title].must_equal TestFeed.new(url:xml_name).title
         end
@@ -82,24 +92,27 @@ describe Parser do
         @xml_list.each do |xml_name|
           feed = TestFeed.new(url:xml_name)
           post = TestPost.new(feed:feed)
-          @parser.fetch_feed_data :feed_url => xml_name
+          @parser.fetch_feed_data(:feed_url => xml_name)
           @parser.posts.size.must_equal 1
           @parser.posts.first[:title].must_equal post.title
           @parser.posts.first[:body].must_equal post.body
+          # @parser.posts.first[:link].must_equal post.link
         end
       end
 
-      # it 'should find one post in dapengti by update' do
-      #   @test_feed = TestFeed.new(url:'dapengti.xml')
-      #    @parser.update_feed_data :feed => @test_feed
-      #   @parser.posts.size.must_equal 1
-      #   @parser.posts.first[:title].must_equal 'title'
-      #   @parser.posts.first[:body].must_equal 'body'
-      # end
+      it 'should find one post in dapengti by update' do
+        @xml_list.each do |xml_name|
+          feed = TestFeed.new(url:xml_name)
+          post = TestPost.new(feed:feed)
+          @parser.update_feed_data(:feed => feed)
+          @parser.posts.size.must_equal 1
+          @parser.posts.first[:title].must_equal post.title
+          @parser.posts.first[:body].must_equal post.body
+          # @parser.posts.first[:link].must_equal post.link
+        end
+      end
     end
 
   end 
-
-
 
 end

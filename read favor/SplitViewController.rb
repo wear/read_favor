@@ -23,8 +23,8 @@ class SplitViewController
     feedFrame = feedSelectView.frame
     postFrame = postSelectView.frame
 
-    feedFrame.size.width = @dividerSize.valueForKey("feedSelectWidth").integerValue
-    postFrame.size.width = @dividerSize.valueForKey("postSelectWidth").integerValue
+    feedFrame.size.width = @dividerSize.valueForKey("feedSelectWidth").integerValue + 5
+    postFrame.size.width = @dividerSize.valueForKey("postSelectWidth").integerValue + 5
 
     @splitView.setDelegate nil
 
@@ -45,8 +45,8 @@ class SplitViewController
     #记下原始的宽度
     @dividerSize ||= NSMutableDictionary.alloc.initWithCapacity 2
 
-    @dividerSize.setValue feedFrame.size.width,forKey:"feedSelectWidth"
-    @dividerSize.setValue postFrame.size.width,forKey:"postSelectWidth"
+    @dividerSize.setValue feedFrame.size.width+ 5,forKey:"feedSelectWidth" 
+    @dividerSize.setValue postFrame.size.width+ 5,forKey:"postSelectWidth"
 
     feedFrame.size.width = 0.0
     postFrame.size.width = 0.0
@@ -76,18 +76,22 @@ class SplitViewController
 
 # splitView delegate method
   def splitView(splitView,canCollapseSubview:subview)
-    true
+    if subview == splitView.subviews.objectAtIndex(0) || subview == splitView.subviews.objectAtIndex(1)
+      return true
+    else
+      return false
+    end
   end
 
   def splitView(sender,constrainMinCoordinate:proposedMin,ofSubviewAt:dividerIndex)
-    return proposedMin + 100.0
+    return proposedMin + 140.0
   end
 
   def splitView(sender,constrainMaxCoordinate:proposedMax,ofSubviewAt:dividerIndex)
-    return proposedMax - 20.0
+    return proposedMax - 140.0
   end
 
-  def splitView(sender,constrainSplitPosition:proposedPosition,ofSubviewAt:dividerIndex)
-    return proposedPosition
-  end
+  # def splitView(sender,constrainSplitPosition:proposedPosition,ofSubviewAt:dividerIndex)
+  #   return proposedPosition
+  # end
 end

@@ -12,7 +12,10 @@ class PostCell < NSTableCellView
 
   def observeValueForKeyPath(keyPath,ofObject:object,change:change,context:context)
     if object.class.to_s.match('Post')
-      @unread.setHidden(true) if keyPath == 'unread'
+      # p change[NSKeyValueObservingOptionNew]
+      # if change[NSKeyValueObservingOptionNew].feed == change[NSKeyValueObservingOptionOld].feed
+        @unread.setHidden(true) if keyPath == 'unread'
+      # end
     end
   end
 end

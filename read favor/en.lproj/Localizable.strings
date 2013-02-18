@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  ReadFavor
+
+  Created by konglingliang on 13-2-15.
+  Copyright (c) 2013年 konglingliang. All rights reserved.
+*/
+"cant_find_feed" = "Can't find feed items,please make sure feed url are corrent!";
+"error_alert" = "Error Alert";
+"ok" = "OK";
+"incorrect_feed_url" = "Incorrect Feed URL";
+"offline" = "You are offline!";
+"exsit_feed" = "Feed are already exsit!";
+"alert" = "Alert";
+"delete_feed_alert" = "Delete feed will remove all items under this feed";
+"cancel" = "Cancel";
+"remove" = "Remove";
+"must_select_feed" = "Must select feed";

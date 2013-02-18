@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  ReadFavor
+
+  Created by konglingliang on 13-2-15.
+  Copyright (c) 2013年 konglingliang. All rights reserved.
+*/
+"cant_find_feed" = "未找到订阅内容，请检查订阅地址是否正确！";
+"error_alert" = "错误提醒";
+"ok" = "确定";
+"incorrect_feed_url" = "订阅地址不正确";
+"offline" = "无网络连接！";
+"alert" = "警告";
+"delete_feed_alert" = "删除订阅将同时删除所有此订阅下的条目，你确定删除吗？";
+"cancel" = "取消";
+"remove" = "删除";
+"must_select_feed" = "必须选择一个订阅";

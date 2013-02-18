@@ -21,10 +21,6 @@ class Budget < NSView
     super(frame)
   end
 
-  def observeValueForKeyPath(keyPath,ofObject:object,change:change,context:context)
-    @unread_count.stringValue = change[NSKeyValueChangeNewKey] if keyPath == 'unread_count'
-  end
-
   def drawRect(dirtyRect)
     attr = NSMutableDictionary.dictionary
     attr.setObject NSFont.fontWithName('Arial',size:10),forKey:NSFontAttributeName

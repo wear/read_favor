@@ -1,8 +1,8 @@
 #
 #  AppDelegate.rb
-#  read favor
+#  staging
 #
-#  Created by konglingliang on 13-2-4.
+#  Created by konglingliang on 13-2-7.
 #  Copyright 2013年 konglingliang. All rights reserved.
 #
 
@@ -18,12 +18,12 @@ class AppDelegate
   attr_reader :managedObjectContext
 
   #
-  # Returns the directory the application uses to store the Core Data store file. This code uses a directory named "read_favor" in the user's Library directory.
+  # Returns the directory the application uses to store the Core Data store file. This code uses a directory named "staging" in the user's Library directory.
   #
   def applicationFilesDirectory
       file_manager = NSFileManager.defaultManager
       library_url = file_manager.URLsForDirectory(NSLibraryDirectory, inDomains:NSUserDomainMask).lastObject
-      library_url.URLByAppendingPathComponent("read_favor")
+      library_url.URLByAppendingPathComponent("staging")
   end
 
   #
@@ -31,7 +31,7 @@ class AppDelegate
   #
   def managedObjectModel
       unless @managedObjectModel
-        model_url = NSBundle.mainBundle.URLForResource("readFavor", withExtension:"momd")
+        model_url = NSBundle.mainBundle.URLForResource("staging", withExtension:"momd")
         @managedObjectModel = NSManagedObjectModel.alloc.initWithContentsOfURL(model_url)
       end
       
@@ -74,10 +74,10 @@ class AppDelegate
               return nil
       end
 
-      url = directory.URLByAppendingPathComponent("read_favor.storedata")
+      url = directory.URLByAppendingPathComponent("staging.storedata")
       @persistentStoreCoordinator = NSPersistentStoreCoordinator.alloc.initWithManagedObjectModel(mom)
 
-      unless @persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration:nil, URL:url, options:nil, error:error)
+      unless @persistentStoreCoordinator.addPersistentStoreWithType(NSXMLStoreType, configuration:nil, URL:url, options:nil, error:error)
           NSApplication.sharedApplication.presentError(error[0])
           return nil
       end
@@ -127,8 +127,7 @@ class AppDelegate
       end
 
       unless self.managedObjectContext.save(error)
-        # NSApplication.sharedApplication.presentError(error[0])
-        p error.value
+          NSApplication.sharedApplication.presentError(error[0])
       end
   end
 
@@ -162,6 +161,5 @@ class AppDelegate
 
       NSTerminateNow
   end
-
 end
 
