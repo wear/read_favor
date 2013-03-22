@@ -9,65 +9,14 @@
 require "test_helper"
 require 'Parser'
 
-class Parser
-  #　修改为读取本地文件方便测试
-  def fetch_data
-    @parser.initWithContentsOfURL NSURL.fileURLWithPath(@feed_url)
-    @parser.delegate = self   
-    @parser.parse
-  end
-end
-
-class TestFeed
-  attr_accessor :url
-  def initialize(options={})
-    @url = options[:url]
-  end
-
-  def title
-    case @url 
-    when 'dapengti.xml'
-      '喷嚏网----阅读、发现和分享：8小时外的健康生活！'
-    when 'ruan.xml'
-      '阮一峰的网络日志' 
-    end
-  end
-
-end
-
-class TestPost
-  attr_accessor :feed
-  def initialize(options={})
-    @feed = options[:feed]
-  end
-
-  def title
-    case @feed.url 
-    when 'dapengti.xml'
-      '视频--瘟疫求生指南'
-    when 'ruan.xml'
-      '代码的抽象三原则' 
-    end
-  end
-
-  def body
-    case @feed.url 
-    when 'dapengti.xml'
-      '求生指南内容'
-    when 'ruan.xml'
-      '三原则内容' 
-    end
-  end
-
-  def link
-    case @feed.url 
-    when 'dapengti.xml'
-      'http://www.dapenti.com/blog/more.asp?name=xilei&id=73381'
-    when 'ruan.xml'
-      'http://www.ruanyifeng.com/blog/2013/01/abstraction_principles.html'
-    end
-  end
-end
+# class Parser
+#   def formatted_data
+#     url = NSURL.URLWithString(@feed_url)
+#     error = Pointer.new_with_type("@")
+#     feed_str = NSString.stringWithContentsOfFile url,encoding:NSUTF8StringEncoding,error:error
+#     feed_data = feed_str.dataUsingEncoding NSUTF8StringEncoding
+#   end
+# end
 
 describe Parser do
   describe 'add feed' do
@@ -77,39 +26,96 @@ describe Parser do
 
     describe 'get dapengti' do
       before do
-        @xml_list = ['dapengti.xml','ruan.xml']
+        @parser.expects(:get_feed_string).returns NSString.stringWithContentsOfFile('dapengti.xml',encoding:NSUTF8StringEncoding,error:nil)
       end
 
       it 'should set feed info' do
-        @xml_list.each do |xml_name|
-          @parser.fetch_feed_data(:feed_url => xml_name)
-          @parser.feed[:url].must_equal xml_name
-          @parser.feed[:title].must_equal TestFeed.new(url:xml_name).title
-        end
+        @parser.fetch_feed_data :feed_url => 'dapengti.xml'
+        @parser.feed[:url].must_equal 'dapengti.xml'
+        @parser.feed[:title].must_equal '喷嚏网----阅读、发现和分享：8小时外的健康生活！'
       end
 
       it 'should find one post by fetch' do
-        @xml_list.each do |xml_name|
-          feed = TestFeed.new(url:xml_name)
-          post = TestPost.new(feed:feed)
-          @parser.fetch_feed_data(:feed_url => xml_name)
-          @parser.posts.size.must_equal 1
-          @parser.posts.first[:title].must_equal post.title
-          @parser.posts.first[:body].must_equal post.body
-          # @parser.posts.first[:link].must_equal post.link
-        end
+        @parser.fetch_feed_data :feed_url => 'dapengti.xml'
+        @parser.posts.size.must_equal 1
+        @parser.posts.first[:title].must_equal '视频--瘟疫求生指南'
+        @parser.posts.first[:body].must_equal '求生指南内容'
+        # @parser.posts.first[:link].must_equal post.link
       end
 
       it 'should find one post in dapengti by update' do
-        @xml_list.each do |xml_name|
-          feed = TestFeed.new(url:xml_name)
-          post = TestPost.new(feed:feed)
-          @parser.update_feed_data(:feed => feed)
-          @parser.posts.size.must_equal 1
-          @parser.posts.first[:title].must_equal post.title
-          @parser.posts.first[:body].must_equal post.body
-          # @parser.posts.first[:link].must_equal post.link
-        end
+        feed = mock()
+        feed.expects(:url).returns('dapengti.xml')
+
+        @parser.update_feed_data(:feed => feed)
+        @parser.posts.size.must_equal 1
+        @parser.posts.first[:title].must_equal'视频--瘟疫求生指南'
+        @parser.posts.first[:body].must_equal '求生指南内容'
+      end
+    end
+
+    describe 'get ruan' do
+      before do 
+        @parser.expects(:get_feed_string).returns NSString.stringWithContentsOfFile('ruan.xml',encoding:NSUTF8StringEncoding,error:nil)
+        # @parser.expects(:formatted_url).returns NSURL.fileURLWithPath('ruan.xml')
+      end
+
+      it 'should set feed info' do
+        @parser.fetch_feed_data :feed_url => 'ruan.xml'
+        @parser.feed[:url].must_equal 'ruan.xml'
+        @parser.feed[:title].must_equal '阮一峰的网络日志' 
+      end
+
+      it 'should find one post by fetch' do
+        @parser.fetch_feed_data :feed_url => 'ruan.xml'
+        @parser.posts.size.must_equal 1
+        @parser.posts.first[:title].must_equal '代码的抽象三原则'
+        @parser.posts.first[:body].must_equal '三原则内容' 
+        @parser.posts.first[:link].must_equal 'http://www.ruanyifeng.com/blog/2013/01/abstraction_principles.html'
+      end
+    end
+
+    describe 'get 36kr' do
+      before do 
+        @parser.expects(:get_feed_string).returns NSString.stringWithContentsOfFile('36kr.xml',encoding:NSUTF8StringEncoding,error:nil)
+        # @parser.expects(:formatted_url).returns NSURL.fileURLWithPath('36kr.xml')
+      end
+
+      it 'should set feed info' do
+        @parser.fetch_feed_data :feed_url => '36kr.xml'
+        @parser.feed[:url].must_equal '36kr.xml'
+        @parser.feed[:title].must_equal '36氪' 
+      end
+
+      it 'should find one post by fetch' do
+        @parser.fetch_feed_data :feed_url => '36kr.xml'
+        @parser.posts.size.must_equal 1
+        @parser.posts.first[:title].must_equal "Mailbox宣布完成第100万个用户的预约处理，新增“摇一摇Undo“功能"
+        @parser.posts.first[:body].must_match /并且对之前的版本进行了更新/
+        @parser.posts.first[:link].must_equal 'http://www.36kr.com/p/202079.html'
+      end
+    end
+
+
+
+    describe 'get nbweekly' do
+      before do 
+        @parser.expects(:get_feed_string).returns NSString.stringWithContentsOfFile('nbweekly.xml',encoding:NSUTF8StringEncoding,error:nil)
+        # @parser.expects(:formatted_url).returns NSURL.fileURLWithPath('36kr.xml')
+      end
+
+      it 'should set feed info' do
+        @parser.fetch_feed_data :feed_url => 'nbweekly.xml'
+        @parser.feed[:url].must_equal 'nbweekly.xml'
+        @parser.feed[:title].must_equal '南都周刊' 
+      end
+
+      it 'should find one post by fetch' do
+        @parser.fetch_feed_data :feed_url => 'nbweekly.xml'
+        @parser.posts.size.must_equal 1
+        @parser.posts.first[:title].must_equal '张铁志：公知污名化，谁受益？'
+        @parser.posts.first[:body].must_match /被污名化，刘瑜说/
+        @parser.posts.first[:link].must_equal "http://nbweekly.feedsportal.com/c/34905/f/643776/s/29ae8f55/l/0L0Snbweekly0N0Ccolumn0Czhangtiezhi0C20A130A20C324340Baspx/story01.htm"
       end
     end
 
