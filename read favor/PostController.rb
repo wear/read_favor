@@ -71,6 +71,9 @@ class PostController
       htmlBody = ""
       htmlBody += "<html><head> <link rel='stylesheet' type='text/css' href='#{css_url.absoluteString}'></head><body>"
       htmlBody += "<h1>#{post.title}</h1>"
+      htmlBody += "<a href='#{post.link}'>#{post.link}</a><br />"
+      htmlBody += "#{post.created_at.strftime('%m-%d %H:%M')}"
+      htmlBody += "<hr>"
       htmlBody += "#{post.body}"
       htmlBody += "</body></html>"
 

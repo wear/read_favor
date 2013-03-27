@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Feed" syncable="YES">
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="unread_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="url" attributeType="String" syncable="YES"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Post" inverseName="feed" inverseEntity="Post" syncable="YES"/>
+    </entity>
+    <entity name="Post" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="unread" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <relationship name="feed" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Feed" inverseName="posts" inverseEntity="Feed" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Feed" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Post" positionX="367" positionY="204" width="128" height="135"/>
+    </elements>
+</model>

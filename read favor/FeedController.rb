@@ -227,6 +227,7 @@ class FeedController
     post = NSEntityDescription.insertNewObjectForEntityForName("Post",inManagedObjectContext:@context)
     post.title = post_hash[:title]
     post.body = post_hash[:body]
+    post.link = post_hash[:link]
     post.created_at = post_hash[:created_at]
     post.feed = feed
     feed.unread_count += 1

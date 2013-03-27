@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D80AC30B16FC03D600C2D560 /* nbweekly.xml in Resources */ = {isa = PBXBuildFile; fileRef = D80AC30A16FC03D600C2D560 /* nbweekly.xml */; };
+		D80AC30E16FC03DF00C2D560 /* 36kr.xml in Resources */ = {isa = PBXBuildFile; fileRef = D80AC30D16FC03DF00C2D560 /* 36kr.xml */; };
 		D80EBFB316C0F29700A23156 /* unread.png in Resources */ = {isa = PBXBuildFile; fileRef = D80EBFB216C0F29700A23156 /* unread.png */; };
 		D854A23E16BF80670089BD11 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D854A23D16BF80670089BD11 /* Cocoa.framework */; };
 		D854A24016BF80670089BD11 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D854A23F16BF80670089BD11 /* MacRuby.framework */; };
@@ -99,7 +101,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D80AC30A16FC03D600C2D560 /* nbweekly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = nbweekly.xml; sourceTree = "<group>"; };
+		D80AC30D16FC03DF00C2D560 /* 36kr.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 36kr.xml; sourceTree = "<group>"; };
 		D80EBFB216C0F29700A23156 /* unread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unread.png; sourceTree = "<group>"; };
+		D82B101E1702976F00A4ED53 /* add_post_link.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = add_post_link.xcdatamodel; sourceTree = "<group>"; };
 		D854A23916BF80670089BD11 /* ReadFavorMain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadFavorMain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D854A23D16BF80670089BD11 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D854A23F16BF80670089BD11 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = Library/Frameworks/MacRuby.framework; sourceTree = DEVELOPER_DIR; };
@@ -299,6 +304,8 @@
 		D87908A516C3EE690087606E /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				D80AC30D16FC03DF00C2D560 /* 36kr.xml */,
+				D80AC30A16FC03D600C2D560 /* nbweekly.xml */,
 				D879089916C3EE140087606E /* ruan.xml */,
 				D879088D16C3EE140087606E /* dapengti.xml */,
 			);
@@ -444,6 +451,8 @@
 				D89077E316CD4112000E3036 /* Help in Resources */,
 				D89077E616CD435D000E3036 /* Credits.rtf in Resources */,
 				D89077ED16CD46CA000E3036 /* Localizable.strings in Resources */,
+				D80AC30B16FC03D600C2D560 /* nbweekly.xml in Resources */,
+				D80AC30E16FC03DF00C2D560 /* 36kr.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,9 +760,10 @@
 		D854A27916BFFB100089BD11 /* readFavor.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D82B101E1702976F00A4ED53 /* add_post_link.xcdatamodel */,
 				D854A27A16BFFB100089BD11 /* readFavor.xcdatamodel */,
 			);
-			currentVersion = D854A27A16BFFB100089BD11 /* readFavor.xcdatamodel */;
+			currentVersion = D82B101E1702976F00A4ED53 /* add_post_link.xcdatamodel */;
 			path = readFavor.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

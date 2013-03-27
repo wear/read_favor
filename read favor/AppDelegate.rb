@@ -76,8 +76,10 @@ class AppDelegate
 
       url = directory.URLByAppendingPathComponent("read_favor.storedata")
       @persistentStoreCoordinator = NSPersistentStoreCoordinator.alloc.initWithManagedObjectModel(mom)
+      options = NSDictionary.dictionaryWithObjectsAndKeys(NSNumber.numberWithBool(true),NSMigratePersistentStoresAutomaticallyOption,
+                                                          NSNumber.numberWithBool(true),NSInferMappingModelAutomaticallyOption, nil)
 
-      unless @persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration:nil, URL:url, options:nil, error:error)
+      unless @persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration:nil, URL:url, options:options, error:error)
           NSApplication.sharedApplication.presentError(error[0])
           return nil
       end
